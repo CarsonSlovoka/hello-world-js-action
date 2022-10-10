@@ -1,0 +1,36 @@
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+name: Test action
+on:
+  push:
+    branches:
+      - test
+  pull_request:
+    branches-ignore:
+      - temp
+defaults:
+  run:
+    shell: pwsh # default shell used on Windows # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsshell
+jobs:
+  test:
+    name: Integration tests
+    strategy:
+      matrix:
+        # [ubuntu-latest, macos-latest, windows-latest]
+        os: [ windows-latest ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Test default
+        id: default
+        uses: CarsonSlovoka/hello-world-js-action@v0.0
+        with:
+          note: 'Cool app!'
+      - name: get the output
+        run: echo "result ${{ steps.default.outputs.status }}"
+      - name: Test Options
+        id: option
+        uses: CarsonSlovoka/hello-world-js-action@v0.0
+        with:
+          note: 'good job'
+          author: 'Carson'
+      - name: get the output
+        run: echo "result ${{ steps.default.outputs.status }}"

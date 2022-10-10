@@ -1,3 +1,9 @@
 .idea/
-out/*
 *.exe
+
+# ts輸出的資料夾
+out/*
+
+# 我們不放入node相依的套件，有需要再自己使用npm install去安裝相依套件即可
+src/node_modules
+src/package-lock.json

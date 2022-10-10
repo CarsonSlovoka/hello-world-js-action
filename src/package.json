@@ -1,0 +1,16 @@
+{
+  "name": "hello-world-js-action",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && ncc build ../out/index.js --license ../LICENSE -o ../dist"
+  },
+  "author": "Carson",
+  "license": "MIT",
+  "devDependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1"
+  }
+}

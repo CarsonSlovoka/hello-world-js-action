@@ -1,0 +1,16 @@
+name: 'Hello World'
+description: 'Tutorial of Github action'
+inputs:
+  note:  # id of input # job.step.with.ID
+    description: 'write something'
+    required: true
+    default: 'Hello world'
+  author:
+    required: false
+    default: 'Anonymous'
+outputs:
+  status: # ID of output # steps.stepID.outputs.ID // @actions/core.setOutput("status", ...)
+    description: 'output status'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

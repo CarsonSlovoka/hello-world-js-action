@@ -2,8 +2,8 @@
 name: Test action
 on:
   push:
-    branches:
-      - test
+    branches: # 注意branches與branches-ignore兩者只能取其一
+      - test  # 僅在push test分支時才會觸發此action
   pull_request:
     branches-ignore:
       - temp
@@ -22,8 +22,8 @@ jobs:
       - name: Test default
         id: default
         uses: CarsonSlovoka/hello-world-js-action@v0.0
-        with:
-          note: 'Cool app!'
+        with: # with可以提供的內容須在action.yml中指定: https://github.com/CarsonSlovoka/hello-world-js-action/blob/master/action.yml 也需要在您的js提供實作
+          note: 'Cool app!' # 需要在js之中實作其用途: https://github.com/CarsonSlovoka/hello-world-js-action/blob/053d8d32583e4b2435c2acaf8ac5ae584deece80/src/index.ts#L5-L6
       - name: get the output
         run: echo "result ${{ steps.default.outputs.status }}"
       - name: Test Options

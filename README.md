@@ -1,5 +1,37 @@
 # Hello world javascript action
 
+使用typescript製作github.action
+
+> 雖然是ts但是最後還是會提交編譯成javascript的內容
+
+## Build
+
+前置作業:
+
+1. [安裝node.js](https://nodejs.org/en/)
+  - 使用choco更新node.js: `choco upgrade nodejs`
+2. 更新npm: `npm install --global npm`
+
+> 注意更新都是可選項，當您編譯出現問題，可以再考慮更新
+
+3. 安裝typescript取得tsc指令: `npm install -g typescript`
+4. 安裝rollup讓js模塊可以變成單一檔案: `npm install -g rollup`
+
+開始建置本套件
+
+```yaml
+git clone https://github.com/CarsonSlovoka/hello-world-js-action.git
+cd hello-world-js-action/src
+npm install # 安裝相依套件@actions/core, 會在當前資料夾生成node_modules文件夾以及devDependencies所用到的相關檔案
+npm run build
+```
+
+其中[npm run build](https://github.com/CarsonSlovoka/hello-world-js-action/blob/463b6e64cc18b9b4cdf85653b7a9c815e5a828b5/src/package.json#L9)做了三件事情
+
+1. 編譯ts檔案, 編譯的設定檔, 輸出至[out資料夾](out/)
+2. 使用`rollup`使tsc編譯出來的index.js檔案形成單一檔案
+3. 使用robocopy把位於src/node_modules文件夾複製到[dist/node_modules](https://github.com/CarsonSlovoka/hello-world-js-action/tree/053d8d3/dist/node_modules)之中
+
 ## Inputs
 
 ### required

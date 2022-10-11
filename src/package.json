@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "scripts_note": "請執行npm run <scriptID>來指名要執行哪一個script",
   "scripts": {
-    "build": "tsc && rollup --format cjs --input ../out/index.js -o ../dist/index.js",
-    "buildByNcc": "tsc && ncc build ../out/index.js --license ../LICENSE -o ../dist"
+    "build": "tsc & rollup --format cjs --input ../out/index.js -o ../dist/index.js & robocopy node_modules ../dist/node_modules /E",
+    "buildByNcc": "tsc & ncc build ../out/index.js --license ../LICENSE -o ../dist & robocopy node_modules ../dist/node_modules /E"
   },
   "author": "Carson",
   "license": "MIT",
